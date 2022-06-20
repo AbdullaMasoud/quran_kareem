@@ -1,0 +1,52 @@
+name: musilm_app
+description: A new Flutter project.
+
+publish_to: "none" # Remove this line if you wish to publish to pub.dev
+
+version: 1.0.0+1
+
+environment:
+  sdk: ">=2.17.3 <3.0.0"
+
+dependencies:
+  cupertino_icons: ^1.0.2
+  dartz: ^0.10.1
+  equatable: ^2.0.3
+  flutter:
+    sdk: flutter
+  flutter_bloc: ^8.0.1
+  get_it: ^7.2.0
+  internet_connection_checker: ^0.0.1+4
+  shared_preferences: ^2.0.15
+  smooth_page_indicator: ^1.0.0+2
+
+dev_dependencies:
+  flutter_lints: ^2.0.0
+  flutter_test:
+    sdk: flutter
+
+flutter:
+  uses-material-design: true
+
+  assets:
+    - assets/images/
+
+  fonts:
+    - family: Cairo
+      fonts:
+        - asset: assets/fonts/Cairo-bold.ttf
+          weight: 700
+        - asset: assets/fonts/Cairo-semiBold.ttf
+          weight: 600
+        - asset: assets/fonts/Cairo-Medium.ttf
+          weight: 500
+        - asset: assets/fonts/Cairo-Regular.ttf
+          weight: 400
+        - asset: assets/fonts/Cairo-Light.ttf
+          weight: 300
+    - family: Scheherazade New
+      fonts:
+        - asset: assets/fonts/Schehera-Bold.ttf
+          weight: 700
+        - asset: assets/fonts/Schehera-Regular.ttf
+          weight: 400

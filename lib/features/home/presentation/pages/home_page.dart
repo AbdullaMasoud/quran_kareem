@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:musilm_app/config/routes/route.dart';
 import 'package:musilm_app/core/utils/color_manager.dart';
 
 class HomePage extends StatelessWidget {
@@ -12,7 +13,7 @@ class HomePage extends StatelessWidget {
           padding: const EdgeInsets.only(left: 40),
           child: IconButton(
             onPressed: () {
-              // Navigator.pushNamed(context, quranIndexScreen);
+              Navigator.pushNamed(context, Routes.quranMainPage);
             },
             icon: const Icon(
               Icons.menu_book,

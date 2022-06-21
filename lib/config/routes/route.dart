@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:musilm_app/features/home/presentation/pages/home_page.dart';
 import 'package:musilm_app/features/onboarding/presentation/pages/onboarding_screen.dart';
+import 'package:musilm_app/features/quran_main_page/presentation/pages/quran_main_page.dart';
 
 class Routes {
   static const String onboardingPage = "/";
@@ -16,6 +17,8 @@ class AppRoute {
             builder: (context) => const OnboardingScreen());
       case Routes.homePge:
         return MaterialPageRoute(builder: (context) => const HomePage());
+      case Routes.quranMainPage:
+        return MaterialPageRoute(builder: (context) => const QuranMainPage());
       default:
         throw ('this page does not exist');
     }

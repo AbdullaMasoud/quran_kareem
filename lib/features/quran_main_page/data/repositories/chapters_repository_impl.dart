@@ -3,7 +3,6 @@ import 'package:musilm_app/core/error/exceptions.dart';
 import 'package:musilm_app/core/error/failures.dart';
 import 'package:musilm_app/core/network/network_info.dart';
 import 'package:musilm_app/features/quran_main_page/data/datasources/chapter_remote_data_source.dart';
-import 'package:musilm_app/features/quran_main_page/domain/entities/chapters.dart';
 import 'package:musilm_app/features/quran_main_page/domain/repositories/chapters_repository.dart';
 
 class ChaptersRepositoryImpl implements ChaptersRepository {
@@ -16,7 +15,7 @@ class ChaptersRepositoryImpl implements ChaptersRepository {
     // required this.chapterLocalDataSource,
   });
   @override
-  Future<Either<Failure, List<Chapter>>> getSurahIndex() async {
+  Future<Either<Failure, dynamic>> getSurahIndex() async {
     if (await networkInfo.isConnected) {
       try {
         final remoteChapter = await chaptersRemoteDataSource.getSurahIndex();

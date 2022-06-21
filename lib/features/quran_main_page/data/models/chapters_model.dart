@@ -1,24 +1,25 @@
 import 'package:musilm_app/features/quran_main_page/domain/entities/chapters.dart';
 
-class ChaptersModel {
-  final List<ChapterModel> chapters;
+class ChaptersModel extends Chapters {
   ChaptersModel({
-    required this.chapters,
-  });
+    required List<Chapter>? chapters,
+  }) : super(chapters: chapters);
+  // late final List<ChapterModel>? chapters;
 
   factory ChaptersModel.fromJson(Map<String, dynamic> json) => ChaptersModel(
-      chapters: List<ChapterModel>.from(json["chapters"]
-          .map((x) => ChapterModel.fromJson(x as Map<String, dynamic>))));
+        chapters: List<ChapterModel>.from(
+            json["chapters"].map((x) => ChapterModel.fromJson(x))),
+      );
 }
 
 class ChapterModel extends Chapter {
-  const ChapterModel({
-    required int id,
-    required String revelationPlace,
-    required String englishName,
-    required String arabicName,
-    required int versesCount,
-    required List<int> pages,
+  ChapterModel({
+    required int? id,
+    required String? revelationPlace,
+    required String? englishName,
+    required String? arabicName,
+    required int? versesCount,
+    required List<int>? pages,
   }) : super(
           pages: pages,
           versesCount: versesCount,
@@ -43,6 +44,6 @@ class ChapterModel extends Chapter {
         "name_simple": englishName,
         "name_arabic": arabicName,
         "verses_count": versesCount,
-        "pages": List<dynamic>.from(pages.map((x) => x)),
+        "pages": List<dynamic>.from(pages!.map((x) => x)),
       };
 }

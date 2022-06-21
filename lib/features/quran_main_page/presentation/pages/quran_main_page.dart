@@ -6,10 +6,25 @@ import 'package:musilm_app/core/utils/color_manager.dart';
 import 'package:musilm_app/features/quran_main_page/presentation/cubit/quran_main_page_cubit.dart';
 import 'package:musilm_app/features/quran_main_page/presentation/widgets/surah_list_builder.dart';
 
-class QuranMainPage extends StatelessWidget {
+class QuranMainPage extends StatefulWidget {
   const QuranMainPage({
     Key? key,
   }) : super(key: key);
+
+  @override
+  State<QuranMainPage> createState() => _QuranMainPageState();
+}
+
+class _QuranMainPageState extends State<QuranMainPage> {
+  _getListofChapters() {
+    BlocProvider.of<QuranMainPageCubit>(context).getSurahInde();
+  }
+
+  @override
+  void initState() {
+    super.initState();
+    _getListofChapters();
+  }
 
   Widget _surahBlocBuilder() {
     return BlocBuilder<QuranMainPageCubit, QuranMainPageState>(
@@ -22,15 +37,15 @@ class QuranMainPage extends StatelessWidget {
           return const Center(child: Text('Error'));
         } else if (state is GetSurahIndexLoaded) {
           // chapters = (state).chapters;
-          return ListView.builder(
-            itemCount: state.chapters.length,
-            itemBuilder: (BuildContext context, int index) {
-              return ChaptersList(
-                // juzList: alljuz[index],
-                chapters: state.chapters[index],
-              );
-            },
-          );
+          return ChaptersList(chapters: state.chapters);
+          // return ListView.builder(
+          //   itemCount: state.chapters.length,
+          //   itemBuilder: (BuildContext context, int index) {
+          //     return ChaptersList(
+          //       chapters: state.chapters[index],
+          //     );
+          //   },
+          // );
         } else {
           return const Center(
             child: CircularProgressIndicator(),

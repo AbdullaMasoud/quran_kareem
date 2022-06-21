@@ -12,7 +12,7 @@ class QuranMainPageInitial extends QuranMainPageState {}
 class GetSurahIndexLoading extends QuranMainPageState {}
 
 class GetSurahIndexLoaded extends QuranMainPageState {
-  final List<Chapter> chapters;
+  final Chapters chapters;
   const GetSurahIndexLoaded({
     required this.chapters,
   });

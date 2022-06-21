@@ -17,7 +17,7 @@ class QuranMainPageCubit extends Cubit<QuranMainPageState> {
   }) : super(QuranMainPageInitial());
 
   Future<void> getSurahInde() async {
-    Either<Failure, List<Chapter>> response = await getSurahIndex(NoParams());
+    Either<Failure, dynamic> response = await getSurahIndex(NoParams());
     emit(response.fold(
         (failure) => GetSurahIndexError(msg: _mapFailureToMsg(failure)),
         (chapters) => GetSurahIndexLoaded(chapters: chapters)));

@@ -3,7 +3,7 @@ import 'package:musilm_app/core/api/end_points.dart';
 import 'package:musilm_app/features/quran_main_page/data/models/chapters_model.dart';
 
 abstract class ChaptersRemoteDataSource {
-  dynamic getSurahIndex();
+  Future<ChaptersModel> getSurahIndex();
 }
 
 class ChaptersRemoteDataSourceImpl implements ChaptersRemoteDataSource {
@@ -12,8 +12,9 @@ class ChaptersRemoteDataSourceImpl implements ChaptersRemoteDataSource {
     required this.apiConsumer,
   });
   @override
-  dynamic getSurahIndex() async {
+  Future<ChaptersModel> getSurahIndex() async {
     final response = await apiConsumer.get(EndPoints.chapters);
-    return ChapterModel.fromJson(response);
+    // return response.map((e) => ChaptersModel.fromJson(response.data)).toList();
+    return ChaptersModel.fromJson(response);
   }
 }

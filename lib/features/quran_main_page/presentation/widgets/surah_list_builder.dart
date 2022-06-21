@@ -3,7 +3,7 @@ import 'package:musilm_app/core/utils/color_manager.dart';
 import 'package:musilm_app/features/quran_main_page/domain/entities/chapters.dart';
 
 class ChaptersList extends StatelessWidget {
-  final Chapter chapters;
+  final Chapters chapters;
   const ChaptersList({
     Key? key,
     required this.chapters,
@@ -22,7 +22,7 @@ class ChaptersList extends StatelessWidget {
             CircleAvatar(
               backgroundColor: ColorManager.green,
               child: Text(
-                chapters.pages.toString(),
+                chapters.chapters![1].pages!.first.toString(),
                 style: TextStyle(
                   color: ColorManager.lightWhite,
                   fontWeight: FontWeight.bold,
@@ -33,26 +33,12 @@ class ChaptersList extends StatelessWidget {
               width: 20,
             ),
             GestureDetector(
-              onTap: () {
-                // Navigator.pushNamed(
-                //   context,
-                //   quranDetailsScreen,
-                //   arguments: chapters,
-                // );
-                // Navigator.push(
-                //   context,
-                //   MaterialPageRoute(
-                //     builder: (context) => QuranDetailsScreen(
-                //       chapters: chapters,
-                //     ),
-                //   ),
-                // );
-              },
+              onTap: () {},
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Text(
-                    chapters.englishName,
+                    chapters.chapters![1].arabicName.toString(),
                     style: const TextStyle(
                       fontWeight: FontWeight.bold,
                       fontSize: 20,
@@ -60,18 +46,18 @@ class ChaptersList extends StatelessWidget {
                   ),
                   Row(
                     children: [
-                      Text(
-                        chapters.revelationPlace,
-                        style: TextStyle(
-                            fontWeight: FontWeight.bold,
-                            fontSize: 14,
-                            color: ColorManager.lightSky),
-                      ),
+                      // Text(
+                      //   chapters.chapters![1].revelationPlace.toString(),
+                      //   style: TextStyle(
+                      //       fontWeight: FontWeight.bold,
+                      //       fontSize: 14,
+                      //       color: ColorManager.lightSky),
+                      // ),
                       const SizedBox(
                         width: 5,
                       ),
                       Text(
-                        "- ${chapters.versesCount} ayahs",
+                        "آيه-${chapters.chapters![1].versesCount} ",
                         style: TextStyle(
                             fontWeight: FontWeight.bold,
                             fontSize: 14,

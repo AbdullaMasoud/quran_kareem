@@ -16,15 +16,23 @@ dependencies:
   flutter:
     sdk: flutter
   flutter_bloc: ^8.0.1
+  geocoding: ^2.0.4
+  geolocator: ^8.2.1
   get_it: ^7.2.0
   internet_connection_checker: ^0.0.1+4
+  intl: ^0.17.0
   shared_preferences: ^2.0.15
   smooth_page_indicator: ^1.0.0+2
+  table_calendar: ^3.0.6
 
 dev_dependencies:
+  flutter_native_splash: ^2.2.4
   flutter_lints: ^2.0.0
   flutter_test:
     sdk: flutter
+
+flutter_native_splash:
+  background_image: assets/images/splash_screen.png
 
 flutter:
   uses-material-design: true
@@ -51,3 +59,6 @@ flutter:
           weight: 700
         - asset: assets/fonts/Schehera-Regular.ttf
           weight: 400
+    - family: MyFlutterApp
+      fonts:
+        - asset: assets/fonts/custom_icon.ttf

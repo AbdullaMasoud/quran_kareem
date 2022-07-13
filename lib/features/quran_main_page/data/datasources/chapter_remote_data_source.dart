@@ -14,7 +14,6 @@ class ChaptersRemoteDataSourceImpl implements ChaptersRemoteDataSource {
   @override
   Future<ChaptersModel> getSurahIndex() async {
     final response = await apiConsumer.get(EndPoints.chapters);
-    // return response.map((e) => ChaptersModel.fromJson(response.data)).toList();
     return ChaptersModel.fromJson(response);
   }
 }

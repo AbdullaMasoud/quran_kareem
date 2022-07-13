@@ -1,3 +1,3 @@
 class AssetsManager {
-  static const String yellowBackground = 'assets/images/yellow_background.jpg';
+  static const String homePageBackground = 'assets/images/home_page.png';
 }

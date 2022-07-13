@@ -12,7 +12,7 @@ class Chapters extends Equatable {
 }
 
 class Chapter extends Equatable {
-  final int? id;
+  final int id;
   final String? revelationPlace;
   final String? englishName;
   final String? arabicName;
@@ -30,4 +30,6 @@ class Chapter extends Equatable {
   @override
   List<Object?> get props =>
       [revelationPlace, englishName, arabicName, versesCount, id];
+
+  toJson() {}
 }

@@ -25,7 +25,7 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
       backgroundColor: ColorManager.offWhite,
       body: SafeArea(
         child: Padding(
-          padding: const EdgeInsets.all(30.0),
+          padding: const EdgeInsets.all(20.0),
           child: Column(
             children: [
               Expanded(
@@ -59,14 +59,15 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
                 count: onboardingContents.length,
               ),
               const SizedBox(
-                height: 40,
+                height: 20,
               ),
-              currentIndex != onboardingContents.length - 1
+              isLast != true
                   ? Column(
                       children: [
                         DefualtTextButton(
                           ontap: () {
                             setState(() {
+                              currentIndex -= 1;
                               bordingContrller.previousPage(
                                 duration: const Duration(
                                   microseconds: 750,
@@ -80,10 +81,14 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
                           textColor: ColorManager.lightSky,
                           backgroundColor: ColorManager.offWhite,
                         ),
+                        const SizedBox(
+                          height: 20,
+                        ),
                         DefualtTextButton(
                           ontap: () {
                             setState(() {
-                              bordingContrller.previousPage(
+                              currentIndex += 1;
+                              bordingContrller.nextPage(
                                 duration: const Duration(
                                   microseconds: 750,
                                 ),
@@ -108,7 +113,8 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
                         // ),
                         DefualtTextButton(
                           ontap: () {
-                            Navigator.pushNamed(context, Routes.homePge);
+                            Navigator.pushNamedAndRemoveUntil(context,
+                                Routes.bottomNavigation, (route) => false);
                           },
                           buttonText: 'لنبدآ',
                           borderColor: ColorManager.green,

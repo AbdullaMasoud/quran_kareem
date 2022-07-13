@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 
 class ColorManager {
   static Color offWhite = const Color(0xFFFAFBFF);
+  static const Color white = Colors.white;
   static Color offBLACK = const Color(0x002b3d5f);
   static Color lightSky = const Color(0xFF88A1C8);
 

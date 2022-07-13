@@ -4,17 +4,18 @@ class ChaptersModel extends Chapters {
   ChaptersModel({
     required List<Chapter>? chapters,
   }) : super(chapters: chapters);
-  // late final List<ChapterModel>? chapters;
-
   factory ChaptersModel.fromJson(Map<String, dynamic> json) => ChaptersModel(
         chapters: List<ChapterModel>.from(
             json["chapters"].map((x) => ChapterModel.fromJson(x))),
       );
+  Map<String, dynamic> toJson() => {
+        "chapters": List<dynamic>.from(chapters!.map((x) => x.toJson())),
+      };
 }
 
 class ChapterModel extends Chapter {
   ChapterModel({
-    required int? id,
+    required int id,
     required String? revelationPlace,
     required String? englishName,
     required String? arabicName,
@@ -38,6 +39,7 @@ class ChapterModel extends Chapter {
         pages: List<int>.from(json["pages"].map((x) => x)),
       );
 
+  @override
   Map<String, dynamic> toJson() => {
         "id": id,
         "revelation_place": revelationPlace,

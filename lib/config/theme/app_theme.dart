@@ -6,13 +6,23 @@ import '../../core/utils/value_manager.dart';
 
 ThemeData getAppTheme() {
   return ThemeData(
+    scaffoldBackgroundColor: ColorManager.white,
     drawerTheme: const DrawerThemeData(),
-    //bottomsheet theme
-    bottomSheetTheme:
-        const BottomSheetThemeData(backgroundColor: Colors.transparent),
-    // main colors
+    fontFamily: FontConstants.fontFamily,
     primaryColor: ColorManager.green,
+    // canvasColor: Colors.transparent,
+    //bottomsheet theme
+    // bottomSheetTheme:
+    //     const BottomSheetThemeData(backgroundColor: Colors.transparent),
+    // main colors
     // disabledColor: ColorManager.gray,
+
+    //b
+    bottomNavigationBarTheme: BottomNavigationBarThemeData(
+      elevation: 0,
+      backgroundColor: ColorManager.white,
+      selectedItemColor: ColorManager.orange,
+    ),
 
     // app bar theme
     appBarTheme: AppBarTheme(
@@ -75,7 +85,7 @@ ThemeData getAppTheme() {
       //     getSemiBoldStyle(color: ColorManager.gray, fontSize: FontSize.s16),
       // displaySmall: ,
       headlineLarge:
-          getBoldStyle(color: ColorManager.offWhite, fontSize: FontSize.s18),
+          getBoldStyle(color: ColorManager.offBLACK, fontSize: FontSize.s18),
       headlineMedium: getSemiBoldStyle(
           color: ColorManager.offWhite, fontSize: FontSize.s16),
       // headlineSmall: ,

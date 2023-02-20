@@ -14,7 +14,7 @@ class OnboardingScreen extends StatefulWidget {
 }
 
 class _OnboardingScreenState extends State<OnboardingScreen> {
-  late var bordingContrller = PageController();
+  late PageController bordingContrller = PageController();
 
   bool isLast = false;
   int currentIndex = 0;
@@ -113,8 +113,8 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
                         // ),
                         DefualtTextButton(
                           ontap: () {
-                            Navigator.pushNamedAndRemoveUntil(context,
-                                Routes.bottomNavigation, (route) => false);
+                            Navigator.pushNamedAndRemoveUntil(
+                                context, Routes.homePge, (route) => false);
                           },
                           buttonText: 'لنبدآ',
                           borderColor: ColorManager.green,

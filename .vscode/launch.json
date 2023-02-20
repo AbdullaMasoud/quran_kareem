@@ -1,0 +1,72 @@
+{
+  // Use IntelliSense to learn about possible attributes.
+  // Hover to view descriptions of existing attributes.
+  // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
+  "version": "0.2.0",
+  "configurations": [
+
+
+    {
+      "name": "musilm_app",
+      "request": "launch",
+      "type": "dart"
+    },
+    // {
+    //   "name": "musilm_app (profile mode)",
+    //   "request": "launch",
+    //   "type": "dart",
+    //   "flutterMode": "profile"
+    // },
+    // {
+    //   "name": "musilm_app (release mode)",
+    //   "request": "launch",
+    //   "type": "dart",
+    //   "flutterMode": "release"
+    // },
+
+    {
+      "name": "11 Pro",
+      "request": "launch",
+      "type": "dart",
+      "deviceId": "0F5E73A7-139D-4871-B9D1-41F558697A35"
+  },
+  {
+      "name": "12 mini",
+      "request": "launch",
+      "type": "dart",
+      "deviceId": "7DE1799A-3E59-441C-A1F5-E242BC2234A0"
+  },
+
+  {
+    "name": "SE",
+    "request": "launch",
+    "type": "dart",
+    "deviceId": "12716AC5-8F99-4ED3-B1D0-7DBD06003104"
+},
+{
+    "name": "14 Pro Max",
+    "request": "launch",
+    "type": "dart",
+    "deviceId": "7D00EB33-2847-4E2B-9BAF-CFA7D22BFA11"
+},
+{
+  "name": "ipad pro 12.9",
+  "request": "launch",
+  "type": "dart",
+  "deviceId": "5843E782-6F32-4601-989F-64A4EBA35147"
+},
+],
+"compounds": [
+  {
+      "name": "All Devices",
+      "configurations": [
+        "musilm_app",
+          "14 Pro Max",
+          "SE",
+          "12 mini",
+          "11 Pro",
+          "ipad pro 12.9",
+      ],
+  }
+  ]
+}

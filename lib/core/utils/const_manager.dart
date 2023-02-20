@@ -11,4 +11,20 @@ class ConstentManager {
   //api
   static const String accept = 'Accept';
   static const String applicationJson = 'application/json';
+
+  //Categories
+  static const String quranKarem = 'القرآن الكريم';
+  static const String qibla = 'القبلة';
+  static const String azkar = 'الاذكار';
+  static const String tasbeeh = 'السبحة';
+
+//praysName
+
+  static const String imsak = 'امساك';
+  static const String fajar = 'الفجر';
+  static const String sunrise = 'الشروق';
+  static const String duhr = 'الظهر';
+  static const String asr = 'العصر';
+  static const String maghrib = 'المغرب';
+  static const String isha = 'العشاء';
 }

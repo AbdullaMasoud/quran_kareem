@@ -16,18 +16,26 @@ dependencies:
   flutter:
     sdk: flutter
   flutter_bloc: ^8.0.1
+  flutter_inset_box_shadow: ^1.0.8
+  flutter_qiblah: ^2.1.0
+  flutter_screenutil: ^5.5.4
+  flutter_spinkit: ^5.1.0
+  flutter_svg: ^1.1.5
   geocoding: ^2.0.4
-  geolocator: ^8.2.1
+  geolocator: ^9.0.2
   get_it: ^7.2.0
+  hijri: ^3.0.0
   internet_connection_checker: ^0.0.1+4
   intl: ^0.17.0
+  # lottie: ^1.1.0
+  motion_sensors: ^0.1.0
   shared_preferences: ^2.0.15
+  shimmer: ^2.0.0
   smooth_page_indicator: ^1.0.0+2
-  table_calendar: ^3.0.6
 
 dev_dependencies:
-  flutter_native_splash: ^2.2.4
   flutter_lints: ^2.0.0
+  flutter_native_splash: ^2.2.4
   flutter_test:
     sdk: flutter
 
@@ -39,6 +47,11 @@ flutter:
 
   assets:
     - assets/images/
+    - assets/images/praytime/
+    - assets/images/praytime_slider/
+    - assets/localdb/azkar.json
+    - assets/localdb/azkar1.json
+    - assets/localdb/azkar2.json
 
   fonts:
     - family: Cairo
@@ -61,4 +74,8 @@ flutter:
           weight: 400
     - family: MyFlutterApp
       fonts:
-        - asset: assets/fonts/custom_icon.ttf
+        - asset: assets/fonts/categories_icons.ttf
+        - asset: assets/fonts/surah_number_icon.ttf
+    - family: icomoon
+      fonts:
+        - asset: assets/fonts/icomoon.ttf

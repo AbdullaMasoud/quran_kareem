@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class FontConstants {
   static const String fontFamily = 'Cairo';
@@ -13,12 +14,12 @@ class FontWeightManager {
 }
 
 class FontSize {
-  static const double s12 = 12.0;
-  static const double s14 = 14.0;
-  static const double s16 = 16.0;
-  static const double s18 = 18.0;
-  static const double s20 = 20.0;
-  static const double s25 = 25.0;
-  static const double s30 = 30.0;
-  static const double s40 = 40.0;
+  static double s10 = 10.sp;
+  static double s12 = 12.sp;
+  static double s14 = 14.sp;
+  static double s15 = 15.sp;
+  static double s18 = 18.sp;
+  static double s20 = 20.sp;
+  static double s25 = 25.sp;
+  static double s30 = 30.sp;
 }

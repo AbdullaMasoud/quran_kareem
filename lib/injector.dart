@@ -5,13 +5,12 @@ import 'package:musilm_app/core/api/api_consumer.dart';
 import 'package:musilm_app/core/api/app_interceptor.dart';
 import 'package:musilm_app/core/api/dio_consumer.dart';
 import 'package:musilm_app/core/network/network_info.dart';
-import 'package:musilm_app/features/bottom_navigation_bar/presentation/cubit/bottom_navigation_bar_cubit.dart';
-import 'package:musilm_app/features/home/data/datasources/pray_time_remote_data_source.dart';
-import 'package:musilm_app/features/home/data/repositories/get_today_pray_time_repository_impl.dart';
-import 'package:musilm_app/features/home/domain/repositories/get_today_pray_time_repository.dart';
-import 'package:musilm_app/features/home/domain/usecases/get_today_pray_time.dart';
-import 'package:musilm_app/features/home/presentation/cubit/cubit/test_cubit.dart';
-import 'package:musilm_app/features/home/presentation/cubit/home_cubit.dart';
+import 'package:musilm_app/features/home_page/data/datasources/pray_time_remote_data_source.dart';
+import 'package:musilm_app/features/home_page/data/repositories/get_today_pray_time_repository_impl.dart';
+import 'package:musilm_app/features/home_page/domain/repositories/get_today_pray_time_repository.dart';
+import 'package:musilm_app/features/home_page/domain/usecases/get_today_pray_time.dart';
+import 'package:musilm_app/features/home_page/presentation/cubit/home_page_cubit.dart';
+import 'package:musilm_app/features/misbaha/presentation/cubit/misbaha_cubit.dart';
 import 'package:musilm_app/features/quran_main_page/data/datasources/chapter_local_data_source.dart';
 import 'package:musilm_app/features/quran_main_page/data/datasources/chapter_remote_data_source.dart';
 import 'package:musilm_app/features/quran_main_page/data/repositories/chapters_repository_impl.dart';
@@ -26,6 +25,13 @@ import 'package:musilm_app/features/surah_details/domain/usecases/get_surah_deta
 import 'package:musilm_app/features/surah_details/presentation/cubit/surah_details_cubit.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
+import 'features/azkar_details/data/datasources/azkar_local_data_source.dart';
+import 'features/azkar_details/data/repositories/azkar_repository_impl.dart';
+import 'features/azkar_details/domain/repositories/azkar_repository.dart';
+import 'features/azkar_details/domain/usecases/get_azkar.dart';
+import 'features/azkar_details/presentation/cubit/azkar_cubit.dart';
+import 'features/home_page/presentation/cubit/address_cubit/user_address_cubit.dart';
+
 final getIt = GetIt.instance;
 
 Future<void> init() async {
@@ -33,11 +39,12 @@ Future<void> init() async {
 
   // Blocs
   getIt.registerFactory(() => QuranMainPageCubit(getSurahIndex: getIt()));
-  getIt.registerFactory(() => HomeCubit(getSpecificPrayTime: getIt()));
-  getIt.registerFactory(() => BottomNavigationBarCubit());
+  getIt.registerFactory(() => HomePageCubit(getSpecificPrayTime: getIt()));
   getIt.registerFactory(
       () => SurahDetailsCubit(getSurahDetailsUseCase: getIt()));
-  getIt.registerFactory(() => TestCubit());
+  getIt.registerFactory(() => AzkarCubit(getAzkar: getIt()));
+  getIt.registerFactory(() => MisbahaCubit());
+  getIt.registerFactory(() => UserAddressCubit());
 
   // Use cases
   getIt.registerLazySingleton(() => GetSurahIndex(chaptersRepository: getIt()));
@@ -47,6 +54,8 @@ Future<void> init() async {
 
   getIt.registerLazySingleton(
       () => GetSurahDetailsUseCase(getSurahDetailsRepository: getIt()));
+
+  getIt.registerLazySingleton(() => GetAzkar(azkarRepository: getIt()));
 
   // Repository
   getIt.registerLazySingleton<ChaptersRepository>(() => ChaptersRepositoryImpl(
@@ -64,6 +73,8 @@ Future<void> init() async {
             getSurahDetailsRemoteDataSource: getIt(),
             getSurahDetailsLocalDataSource: getIt(),
           ));
+  getIt.registerLazySingleton<AzkarRepository>(
+      () => GetAazkarRepositoryImpl(azkarLocalDataSource: getIt()));
 
   // Data Sources
   getIt.registerLazySingleton<ChaptersRemoteDataSource>(
@@ -78,6 +89,9 @@ Future<void> init() async {
       () => GetSurahDetailsRemoteDataSourceImpl(apiConsumer: getIt()));
   getIt.registerLazySingleton<GetSurahDetailsLocalDataSource>(
       () => GetSurahDetailsLocalDataSourceImpl(sharedPreferences: getIt()));
+
+  getIt.registerLazySingleton<GetAzkarLocalDataSource>(
+      () => GetAzkarLocalDataSourceImpl());
 
   //! Core
   getIt.registerLazySingleton<NetworkInfo>(

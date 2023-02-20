@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:musilm_app/core/utils/color_manager.dart';
+import 'package:musilm_app/core/wigdets/custom_icons.dart';
 import 'package:musilm_app/features/quran_main_page/domain/entities/chapters.dart';
 import 'package:musilm_app/features/surah_details/presentation/pages/surah_details_page.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class ChaptersList extends StatelessWidget {
   final Chapter chapters;
@@ -15,72 +17,65 @@ class ChaptersList extends StatelessWidget {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.end,
       children: [
-        const SizedBox(
-          height: 15,
-        ),
-        Row(
-          mainAxisAlignment: MainAxisAlignment.end,
-          children: [
-            GestureDetector(
-              onTap: () {
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(
-                    builder: (context) => SurahDetailsPage(
-                      chapter: chapters,
+        Padding(
+          padding: const EdgeInsets.all(10.0),
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.end,
+            children: [
+              GestureDetector(
+                onTap: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => SurahDetailsPage(
+                        chapter: chapters,
+                      ),
                     ),
-                  ),
-                );
-              },
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.end,
-                children: [
-                  Text(
-                    chapters.arabicName.toString(),
-                    style: const TextStyle(
-                      fontWeight: FontWeight.bold,
-                      fontSize: 20,
+                  );
+                },
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.end,
+                  children: [
+                    Text(chapters.arabicName.toString(),
+                        style: Theme.of(context).textTheme.labelMedium),
+                    Row(
+                      children: [
+                        Text("${_formatAyahString(chapters.versesCount)}-",
+                            style: Theme.of(context).textTheme.labelSmall),
+                        Text(chapters.versesCount.toString(),
+                            style: Theme.of(context).textTheme.labelSmall),
+                        const SizedBox(
+                          width: 5,
+                        ),
+                      ],
                     ),
-                  ),
-                  Row(
-                    children: [
-                      Text(
-                        "${_formatAyahString(chapters.versesCount)}-",
-                        style: TextStyle(
-                            fontWeight: FontWeight.bold,
-                            fontSize: 14,
-                            color: ColorManager.lightSky),
-                      ),
-                      Text(
-                        chapters.versesCount.toString(),
-                        style: TextStyle(
-                            fontWeight: FontWeight.bold,
-                            fontSize: 14,
-                            color: ColorManager.lightSky),
-                      ),
-                      const SizedBox(
-                        width: 5,
-                      ),
-                    ],
-                  ),
-                ],
-              ),
-            ),
-            Padding(
-              padding: const EdgeInsets.only(left: 20),
-              child: CircleAvatar(
-                backgroundColor: ColorManager.green,
-                child: Text(
-                  chapters.pages!.first.toString(),
-                  style: TextStyle(
-                    color: ColorManager.lightWhite,
-                    fontWeight: FontWeight.bold,
-                  ),
+                  ],
                 ),
               ),
-            ),
-          ],
-        )
+              Padding(
+                padding: const EdgeInsets.only(left: 20),
+                child: Stack(
+                  alignment: Alignment.center,
+                  children: [
+                    Icon(
+                      CustomIcomoon.surahNumberIcon,
+                      size: 40.r,
+                      color: ColorManager.grey,
+                    ),
+                    Text(chapters.id.toString(),
+                        // chapters.pages!.first.toString(),
+                        style: Theme.of(context).textTheme.titleSmall),
+                  ],
+                ),
+              ),
+            ],
+          ),
+        ),
+        const Divider(
+          thickness: 1,
+          indent: 10,
+          endIndent: 10,
+        ),
       ],
     );
   }

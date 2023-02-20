@@ -1,10 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:musilm_app/config/routes/route.dart';
-
 import 'package:musilm_app/core/utils/color_manager.dart';
+import 'package:musilm_app/core/utils/const_manager.dart';
+import 'package:musilm_app/core/wigdets/appbar.dart';
+import 'package:musilm_app/core/wigdets/custom_icons.dart';
+
 import 'package:musilm_app/features/quran_main_page/presentation/cubit/quran_main_page_cubit.dart';
 import 'package:musilm_app/features/quran_main_page/presentation/widgets/surah_list_builder.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class QuranMainPage extends StatefulWidget {
   const QuranMainPage({
@@ -38,6 +41,7 @@ class _QuranMainPageState extends State<QuranMainPage> {
         } else if (state is GetSurahIndexLoaded) {
           return Expanded(
             child: ListView.builder(
+              padding: EdgeInsets.zero,
               shrinkWrap: true,
               itemCount: state.chapters.chapters!.length,
               itemBuilder: (BuildContext context, int index) {
@@ -61,80 +65,130 @@ class _QuranMainPageState extends State<QuranMainPage> {
     return DefaultTabController(
       length: 2,
       child: Scaffold(
-        appBar: AppBar(
-          title: const Text(
-            'القرآن الكريم',
-            style: TextStyle(
-              color: Colors.black,
-              fontWeight: FontWeight.bold,
-            ),
-          ),
-          actions: [
-            Padding(
-              padding: const EdgeInsets.only(right: 10.0),
-              child: IconButton(
-                  onPressed: () {
-                    Navigator.pushNamed(context, Routes.shimmer);
-                  },
-                  icon: const Icon(
-                    Icons.search,
-                    color: Colors.black,
-                  )),
-            ),
-          ],
-        ),
-
-        body: Padding(
-          padding: const EdgeInsets.all(20.0),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.center,
-            children: [
-              Container(
-                padding: const EdgeInsets.all(10),
-                decoration: BoxDecoration(
-                  color: ColorManager.lightWhite,
-                  border: Border.all(
-                    width: 2,
-                    color: ColorManager.lightWhite,
+        body: Column(
+          children: [
+            Stack(
+              children: [
+                AppBarImageBackGround(hieght: 190.h),
+                Padding(
+                  padding: EdgeInsets.only(
+                    top: 30.h,
+                    left: 10.w,
+                    right: 40.w,
                   ),
-                  borderRadius: const BorderRadius.all(Radius.circular(18)),
-                ),
-                child: TabBar(
-                    labelPadding: EdgeInsets.zero,
-                    indicatorSize: TabBarIndicatorSize.label,
-                    indicatorColor: ColorManager.green,
-                    labelColor: ColorManager.green,
-                    unselectedLabelColor: ColorManager.lightSky,
-                    labelStyle: const TextStyle(
-                      fontWeight: FontWeight.bold,
-                      fontSize: 15,
-                    ),
-                    unselectedLabelStyle: const TextStyle(
-                      fontWeight: FontWeight.bold,
-                      fontSize: 15,
-                    ),
-                    tabs: const [
-                      Tab(
-                        text: "السور",
+                  child: Column(
+                    children: [
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          IconButton(
+                              onPressed: () {
+                                Navigator.pop(context);
+                              },
+                              icon: const Icon(
+                                Icons.arrow_back_ios_new,
+                                color: ColorManager.offWhite,
+                              )),
+                          const Spacer(),
+                          Text(
+                            ConstentManager.quranKarem,
+                            style: Theme.of(context).textTheme.headlineLarge,
+                          ),
+                        ],
                       ),
-                      Tab(
-                        text: "الاجزاء",
+                      Container(
+                        padding: const EdgeInsets.all(10),
+                        child: TabBar(
+                          labelPadding: const EdgeInsets.all(10),
+                          indicatorSize: TabBarIndicatorSize.tab,
+                          indicatorColor: ColorManager.offWhite,
+                          labelColor: ColorManager.offWhite,
+                          unselectedLabelColor: ColorManager.grey400,
+                          labelStyle: Theme.of(context).textTheme.labelLarge,
+                          unselectedLabelStyle:
+                              Theme.of(context).textTheme.labelLarge,
+                          tabs: [
+                            SizedBox(
+                              height: 70.h,
+                              child: Tab(
+                                text: "السور",
+                                icon: Icon(CustomIcon.quranIcon, size: 30.r),
+                              ),
+                            ),
+                            SizedBox(
+                              height: 70.h,
+                              child: Tab(
+                                text: "الاجزاء",
+                                icon: Icon(CustomIcon.quranIcon, size: 30.r),
+                              ),
+                            ),
+                          ],
+                        ),
                       ),
-                    ]),
-              ),
-              Expanded(
+                    ],
+                  ),
+                )
+              ],
+            ),
+            Expanded(
+              child: Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 10),
                 child: TabBarView(
                   children: [
                     Column(children: [_surahBlocBuilder()]),
                     Column(children: [_surahBlocBuilder()]),
                   ],
                 ),
-              )
-            ],
-          ),
+              ),
+            ),
+          ],
         ),
-        //
       ),
     );
   }
 }
+
+
+// appBar: AppBar(
+//           toolbarHeight: 170,
+//           flexibleSpace: const AppBarImageBackGround(hieght: 250),
+//           title: Text(
+//             ConstentManager.quranKarem,
+//             style: Theme.of(context).textTheme.headlineLarge,
+//           ),
+//           leading: IconButton(
+//             onPressed: () {
+//               Navigator.pop(context);
+//             },
+//             icon: const Icon(
+//               Icons.arrow_back_ios_new,
+//               color: ColorManager.offWhite,
+//             ),
+//           ),
+//           bottom: TabBar(
+//             padding: const EdgeInsets.all(30),
+//             // labelPadding: const EdgeInsets.all(10),
+//             indicatorSize: TabBarIndicatorSize.tab,
+//             indicatorColor: ColorManager.offWhite,
+//             labelColor: ColorManager.offWhite,
+//             unselectedLabelColor: ColorManager.offWhite,
+//             labelStyle: Theme.of(context).textTheme.labelLarge,
+//             unselectedLabelStyle: Theme.of(context).textTheme.labelLarge,
+//             tabs: const [
+//               SizedBox(
+//                 height: 100,
+//                 child: Tab(
+//                   text: "السور",
+//                   icon: Icon(CustomIcon.quranIcon, size: 50),
+//                 ),
+//               ),
+//               SizedBox(
+//                 height: 100,
+//                 child: Tab(
+//                   text: "الاجزاء",
+//                   icon: Icon(CustomIcon.quranIcon, size: 50),
+//                 ),
+//               ),
+//             ],
+//           ),
+//         ),

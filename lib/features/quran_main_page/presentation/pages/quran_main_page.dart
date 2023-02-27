@@ -60,6 +60,21 @@ class _QuranMainPageState extends State<QuranMainPage> {
     );
   }
 
+  Widget _surahIconBuilder() {
+    return Expanded(
+      child: ListView.builder(
+        padding: EdgeInsets.zero,
+        shrinkWrap: true,
+        // itemCount: state.chapters.chapters!.length,
+        itemBuilder: (BuildContext context, int index) {
+          return const ChaptersList(
+              // chapters: state.chapters.chapters![index],
+              );
+        },
+      ),
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
     return DefaultTabController(

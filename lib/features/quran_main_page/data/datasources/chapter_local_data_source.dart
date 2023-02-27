@@ -35,6 +35,4 @@ class ChapterLocalDataSourceImpl implements ChapterLocalDataSource {
       throw CacheException();
     }
   }
-
-
 }

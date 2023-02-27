@@ -19,6 +19,7 @@ class CustomIcon {
 // IconData(0xe900, fontFamily: 'icomoon')
 
 // ea2e
+// \ue967
 
 class CustomIcomoon {
   CustomIcomoon._();
@@ -28,3 +29,11 @@ class CustomIcomoon {
       IconData(0xe900, fontFamily: _icomoon);
   static const IconData reapetIcon = IconData(0xe901, fontFamily: _icomoon);
 }
+
+class SurahNamesIcon {
+  SurahNamesIcon._();
+  static const _icomoon = 'icon-surah';
+  static const IconData surahName = IconData(0xe967, fontFamily: _icomoon);
+}
+
+String iconFont = "icon-surah";

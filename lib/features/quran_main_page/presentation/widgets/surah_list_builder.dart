@@ -6,10 +6,11 @@ import 'package:musilm_app/features/surah_details/presentation/pages/surah_detai
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class ChaptersList extends StatelessWidget {
-  final Chapter chapters;
+  // load surah icon
+  final Chapter? chapters;
   const ChaptersList({
     Key? key,
-    required this.chapters,
+    this.chapters,
   }) : super(key: key);
 
   @override
@@ -28,7 +29,7 @@ class ChaptersList extends StatelessWidget {
                     context,
                     MaterialPageRoute(
                       builder: (context) => SurahDetailsPage(
-                        chapter: chapters,
+                        chapter: chapters!,
                       ),
                     ),
                   );
@@ -36,13 +37,18 @@ class ChaptersList extends StatelessWidget {
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.end,
                   children: [
-                    Text(chapters.arabicName.toString(),
-                        style: Theme.of(context).textTheme.labelMedium),
+                    Text(
+                      chapters!.arabicName.toString(),
+                      // style: Theme.of(context).textTheme.labelMedium,
+                      style: const TextStyle(
+                        fontFamily: "icomoon",
+                      ),
+                    ),
                     Row(
                       children: [
-                        Text("${_formatAyahString(chapters.versesCount)}-",
+                        Text("${_formatAyahString(chapters!.versesCount)}-",
                             style: Theme.of(context).textTheme.labelSmall),
-                        Text(chapters.versesCount.toString(),
+                        Text(chapters!.versesCount.toString(),
                             style: Theme.of(context).textTheme.labelSmall),
                         const SizedBox(
                           width: 5,
@@ -62,8 +68,8 @@ class ChaptersList extends StatelessWidget {
                       size: 40.r,
                       color: ColorManager.grey,
                     ),
-                    Text(chapters.id.toString(),
-                        // chapters.pages!.first.toString(),
+                    Text(chapters!.id.toString(),
+                        // chapters!.pages!.first.toString(),
                         style: Theme.of(context).textTheme.titleSmall),
                   ],
                 ),

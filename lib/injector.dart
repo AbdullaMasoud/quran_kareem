@@ -24,7 +24,6 @@ import 'package:musilm_app/features/surah_details/domain/repositories/get_surah_
 import 'package:musilm_app/features/surah_details/domain/usecases/get_surah_details.dart';
 import 'package:musilm_app/features/surah_details/presentation/cubit/surah_details_cubit.dart';
 import 'package:shared_preferences/shared_preferences.dart';
-
 import 'features/azkar_details/data/datasources/azkar_local_data_source.dart';
 import 'features/azkar_details/data/repositories/azkar_repository_impl.dart';
 import 'features/azkar_details/domain/repositories/azkar_repository.dart';

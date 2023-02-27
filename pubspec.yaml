@@ -52,6 +52,7 @@ flutter:
     - assets/localdb/azkar.json
     - assets/localdb/azkar1.json
     - assets/localdb/azkar2.json
+    - assets/localdb/chapters.json
 
   fonts:
     - family: Cairo
@@ -79,3 +80,6 @@ flutter:
     - family: icomoon
       fonts:
         - asset: assets/fonts/icomoon.ttf
+    - family: icon-surah
+      fonts:
+        - asset: assets/fonts/surah_names.ttf
